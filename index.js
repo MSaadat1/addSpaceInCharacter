@@ -1,21 +1,31 @@
-// return the longest word in a string.
-// first use split method to get each word of string
-// split(" ")
-// assign an empty variable
-// loop through each words' length 
-// if each word length is bigger than the the empty variable
-// assign the variable to that word
-// it loops through each word
-// until find the longest word by checking the length of each word
-function longestWords(str){
-    let eachWord = str.split(" ");
-    let longestWord = "";
-    for(let i = 0; i < eachWord.length; i++){
-     if(eachWord[i].length > longestWord.length) {
-        longestWord = eachWord[i];
-     }
+// Given an array of integers, return an array such that each element
+// at index i is the product of all the numbers in the original
+// array except the one at i.
+// for solving this code problem let me go through each step
+// of course we need function with one parameter
+function returnInt(arr) {
+  // we need to return an array of numbers so we need to store them in a new array
+  let result = [];
+  // to go through each number we need for loop
+  for (let i = 0; i < arr.length; i++) {
+    // to get each number inside the loop we need to have a inner loop
+    // we need to store number 1 in a variable
+    // this one store the accumulation after each iteration meaning when we multiply two numbers it store the result of it
+    // this result is again multiplying with the second number and it continues until end of loop
+    let product = 1;
+    for (let j = 0; j < arr.length; j++) {
+      if (i !== j) {
+        // this ensures that current index i of outer loop is skipped
+        // meaning the index i should be skipped
+        product *= arr[j];
+        // product start at 1
+      }
     }
-    return longestWord;
+    result.push(product);
+    // push the result to result
+  }
+  return result;
+  // return the result
 }
 
-console.log(longestWords("JavaScript learning is like being lost in a desert"));
+console.log(returnInt([1,2,3,4,5]));
